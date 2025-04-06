@@ -294,4 +294,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+});
+
+// Gallery images lightbox
+document.addEventListener("DOMContentLoaded", function() {
+    // Add gallery images to the lightbox functionality
+    const galleryImages = document.querySelectorAll('.gallery-item img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    
+    // Add click event to each gallery image
+    galleryImages.forEach(img => {
+        img.addEventListener('click', function() {
+            lightbox.style.display = 'block';
+            lightboxImg.src = this.src;
+            lightboxCaption.innerHTML = this.alt;
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
+    });
 }); 
