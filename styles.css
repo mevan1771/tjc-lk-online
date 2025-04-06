@@ -847,6 +847,76 @@ footer {
     header .container {
         height: 70px;
     }
+    
+    .features {
+        padding: 60px 0 40px;
+    }
+    
+    .feature-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .feature-card {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 170px; /* Control height */
+        justify-content: center;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .feature-card img {
+        width: 45px;
+        height: 45px;
+        margin-bottom: 12px;
+        transition: transform 0.3s ease;
+    }
+    
+    .feature-card:hover img {
+        transform: scale(1.15);
+    }
+    
+    .feature-card h3 {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+        letter-spacing: -0.3px;
+    }
+    
+    .feature-card p {
+        font-size: 0.8rem;
+        line-height: 1.35;
+        margin-bottom: 0;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .feature-card {
+        min-height: 160px;
+        padding: 12px 10px;
+    }
+    
+    .feature-card img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 8px;
+    }
+    
+    .feature-card h3 {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+    }
+    
+    .feature-card p {
+        font-size: 0.75rem;
+    }
 }
 
 @media screen and (max-width: 576px) {
