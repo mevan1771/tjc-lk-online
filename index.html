@@ -181,29 +181,33 @@
                     </div>
                     <div class="info-item">
                         <i class="fas fa-globe"></i>
-                        <p>www.sajithtrading.com</p>
+                        <p><a href="https://www.sajithtrading.com" target="_blank">www.sajithtrading.com</a></p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-globe"></i>
+                        <p><a href="https://www.tjc.lk" target="_blank">www.tjc.lk</a></p>
                     </div>
                     <div class="world-map">
                         <img src="Images/world-map-outline.webp" alt="World Map">
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form>
+                    <form action="https://formspree.io/f/xqapgabz" method="POST">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" required>
+                            <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" required>
+                            <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone</label>
-                            <input type="tel" id="phone">
+                            <input type="tel" id="phone" name="phone">
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" rows="5" required></textarea>
+                            <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
                         <button type="submit" class="btn-primary">Send Message</button>
                     </form>
@@ -250,6 +254,19 @@
         <span class="close-lightbox">&times;</span>
         <img class="lightbox-content" id="lightbox-img">
         <div id="lightbox-caption"></div>
+    </div>
+
+    <!-- Form submission confirmation message -->
+    <div class="form-confirmation" id="formConfirmation">
+        <div class="confirmation-content">
+            <span class="close-confirmation">&times;</span>
+            <div class="confirmation-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Thank You!</h3>
+            <p>Your message has been sent successfully. We'll get back to you shortly.</p>
+            <button class="btn-primary" id="confirmationOkBtn">OK</button>
+        </div>
     </div>
 
     <script src="script.js"></script>

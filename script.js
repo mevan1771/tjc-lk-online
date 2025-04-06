@@ -78,7 +78,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form Validation
+// Add Formspree AJAX handling (optional enhancement)
 const contactForm = document.querySelector('.contact-form form');
 
 if (contactForm) {
@@ -116,9 +116,32 @@ if (contactForm) {
         }
         
         if (isValid) {
-            // Here you would normally send the form data to your server
-            alert('Your message has been sent. We will contact you shortly!');
-            contactForm.reset();
+            // Send form data to Formspree
+            const formData = new FormData(contactForm);
+            
+            fetch('https://formspree.io/f/xqapgabz', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show styled confirmation message instead of alert
+                    showConfirmation();
+                    contactForm.reset();
+                } else {
+                    // Show error message
+                    response.json().then(data => {
+                        alert('Submission failed: ' + (data.error || 'Please try again later.'));
+                    });
+                }
+            })
+            .catch(error => {
+                alert('Submission failed: Please try again later.');
+                console.error(error);
+            });
         }
     });
 }
@@ -232,4 +255,43 @@ document.addEventListener("DOMContentLoaded", function() {
             document.body.style.overflow = 'auto'; // Enable scrolling
         }
     });
+});
+
+// Add confirmation functions
+function showConfirmation() {
+    const confirmation = document.getElementById('formConfirmation');
+    confirmation.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+}
+
+function hideConfirmation() {
+    const confirmation = document.getElementById('formConfirmation');
+    confirmation.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
+}
+
+// Add event listeners for confirmation message
+document.addEventListener('DOMContentLoaded', function() {
+    const closeBtn = document.querySelector('.close-confirmation');
+    const okBtn = document.getElementById('confirmationOkBtn');
+    const confirmation = document.getElementById('formConfirmation');
+    
+    if (closeBtn && okBtn && confirmation) {
+        closeBtn.addEventListener('click', hideConfirmation);
+        okBtn.addEventListener('click', hideConfirmation);
+        
+        // Close when clicking outside the confirmation box
+        confirmation.addEventListener('click', function(e) {
+            if (e.target === confirmation) {
+                hideConfirmation();
+            }
+        });
+        
+        // Close on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && confirmation.style.display === 'flex') {
+                hideConfirmation();
+            }
+        });
+    }
 }); 

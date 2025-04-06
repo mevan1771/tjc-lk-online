@@ -1041,3 +1041,75 @@ body.menu-open {
     height: 50px;
     font-size: 18px;
 }
+
+/* Form Confirmation Message */
+.form-confirmation {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1100;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirmation-content {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.5s;
+}
+
+.close-confirmation {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.3s;
+}
+
+.close-confirmation:hover {
+    color: #666;
+}
+
+.confirmation-icon {
+    font-size: 50px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.confirmation-content h3 {
+    margin-bottom: 15px;
+    color: var(--dark-green);
+    font-size: 1.8rem;
+}
+
+.confirmation-content p {
+    margin-bottom: 25px;
+    color: var(--light-text);
+}
+
+.confirmation-content .btn-primary {
+    min-width: 100px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
