@@ -934,6 +934,11 @@ footer {
         grid-column: span 2;
         order: 4;
     }
+    
+    /* Hide the Exporting Countries section */
+    .footer-links {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 576px) {
